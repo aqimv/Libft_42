@@ -74,7 +74,7 @@ char			**ft_strsplit(char const *s, char c)
 	char		**ch;
 	size_t		count;
 
-	if (!s || !(ch = malloc((sizeof(char *) * ft_s(s, c)) + 1)))
+	if (!s || !(ch = (char **)malloc((sizeof(char *) * ft_s(s, c)) + 1)))
 		return (NULL);
 	count = ft_s(s, c);
 	if (count > count + 1)

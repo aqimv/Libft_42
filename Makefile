@@ -23,11 +23,20 @@ SRC = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c f
 		ft_itoa.c ft_strsplit.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c \
 		ft_lstmap.c ft_sqrt.c ft_range.c ft_uppercase.c ft_lowercase.c ft_wordcounter.c get_next_line.c
 
+SRC_PF_DIR = ./srcs/ft_printf/
+SRC_PF = char.c float2.c ft_printf.c init.c octal.c setters.c unsignedint.c utils2.c float.c \
+		float3.c hex.c int.c pointer.c string.c utils.c utils3.c
+# SRCS_PF = $(addprefix $(SRC_PF_DIR), $(SRC_PF))
+
 OBJ = $(SRC:.c=.o)
 OBJ_DIR = ./obj/
 OBJS = $(addprefix $(OBJ_DIR), $(OBJ))
 
-INC = libft.h get_next_line.h
+PF_OBJ = $(SRC_PF:.c=.o)
+PF_OBJ_DIR = ./obj/ft_printf/
+PF_OBJS = $(addprefix $(PF_OBJ_DIR), $(PF_OBJ))
+
+INC = libft.h get_next_line.h ft_printf.h
 INC_DIR = ./includes/
 INCS = $(addprefix $(INC_DIR), $(INC))
 
@@ -35,17 +44,23 @@ FLAGS = -g -Wall -Werror -Wextra -I$(INC_DIR)
 
 all: $(NAME)
 
-$(NAME): $(OBJ_DIR) $(OBJS)
+$(NAME): $(OBJ_DIR) $(OBJS) $(PF_OBJS)
 		ar rc $(NAME) $(OBJS)
 		ranlib $(NAME)
 
 $(OBJ_DIR): 
 		@mkdir -p $@
+		mkdir -p $(PF_OBJ_DIR)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INCS)
 		gcc $(FLAGS) -o $@ -c $<
 
+$(PF_OBJ_DIR)%.o: $(SRC_PF_DIR)%.c $(INCS)
+		gcc $(FLAGS) -o $@ -c $<
+
 clean:
+		@rm -f $(PF_OBJS)
+		@rm -rf $(PF_OBJ_DIR)
 		@rm -f $(OBJS)
 		@rm -rf $(OBJ_DIR)
 

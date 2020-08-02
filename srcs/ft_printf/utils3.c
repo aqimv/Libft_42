@@ -1,40 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wordcounter.c                                   :+:      :+:    :+:   */
+/*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skennith <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/05 18:00:42 by skennith          #+#    #+#             */
-/*   Updated: 2019/11/05 18:00:44 by skennith         ###   ########.fr       */
+/*   Created: 2020/07/21 23:16:20 by skennith          #+#    #+#             */
+/*   Updated: 2020/07/21 23:16:22 by skennith         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <ft_printf.h>
 
-int		ft_wordcounter(char *str)
+int				md(int i)
 {
-	int	i;
-	int	counter;
-	int	x;
+	return (i >= 0 ? i : i * -1);
+}
 
-	counter = 0;
-	i = 0;
-	x = 0;
-	while (str[i] != '\0')
-	{
-		while (str[i] && str[i] != ' ' && str[i] != '\n' && str[i] != '\t')
-		{
-			i++;
-			x = 1;
-		}
-		if (x == 1)
-		{
-			counter++;
-			x = 0;
-		}
-		if (str[i] != '\0')
-			i++;
-	}
-	return (counter);
+long double		md_double(long double i)
+{
+	return (i >= 0 ? i : i * -1);
 }

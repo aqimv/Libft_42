@@ -1,4 +1,4 @@
 # Libft_42
 
 
-my implementation of the C standard library functions including the Get_Next_Line function from the first project of school 21 and my own implementation of the standard printf function
+My implementation of the C standard library functions including the Get_Next_Line function from the first project of school 21 and my own implementation of the standard printf function
